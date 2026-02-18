@@ -1,0 +1,102 @@
+/* Google Font */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* MULTI COLOR ANIMATED BACKGROUND */
+body {
+  min-height: 100vh;
+  background: linear-gradient(
+    45deg,
+    #ff006e,
+    #8338ec,
+    #3a86ff,
+    #06d6a0,
+    #ffd166,
+    #ef476f
+  );
+  background-size: 600% 600%;
+  animation: rainbowBG 14s ease infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+/* Background animation */
+@keyframes rainbowBG {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Floating gradient blobs */
+body::before,
+body::after {
+  content: "";
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.6;
+  animation: float 8s ease-in-out infinite;
+}
+
+body::before {
+  background: #00f5d4;
+  top: 10%;
+  left: 5%;
+}
+
+body::after {
+  background: #ffbe0b;
+  bottom: 10%;
+  right: 5%;
+}
+
+@keyframes float {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-40px); }
+  100% { transform: translateY(0); }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #ff006e, #3a86ff);
+  border-radius: 10px;
+}
+
+/* Text selection */
+::selection {
+  background: #ff006e;
+  color: white;
+}
+
+/* Smooth transitions everywhere */
+button,
+input,
+select,
+div {
+  transition: all 0.35s ease;
+}
+
+/* Neon glow effect class (optional) */
+.neon {
+  text-shadow:
+    0 0 5px #fff,
+    0 0 10px #ff006e,
+    0 0 20px #8338ec,
+    0 0 40px #3a86ff;
+}
+
