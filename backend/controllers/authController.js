@@ -9,7 +9,7 @@ exports.signup = async (req, res) => {
     await User.create({ name, email, password: hashed, role });
     res.json({ message: "User created" });
   } catch (error) {
-    res.status(500).json({ message: error.message || "Signup failed" });
+    res.status(500).json({ message: "Signup failed" });
   }
 };
 
@@ -28,6 +28,6 @@ exports.login = async (req, res) => {
 
     res.json({ token, role: user.role });
   } catch (error) {
-    res.status(500).json({ message: error.message || "Login failed" });
+    res.status(500).json({ message: "Login failed" });
   }
 };

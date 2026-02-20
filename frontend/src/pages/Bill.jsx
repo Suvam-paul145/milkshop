@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 function Bill() {
   const { state } = useLocation();
   const navigate = useNavigate();
-  const { product } = state || {};
+  const product = state?.product;
 
   if (!product) {
     return (

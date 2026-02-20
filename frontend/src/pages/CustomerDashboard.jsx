@@ -7,7 +7,7 @@ function CustomerDashboard() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    api.get("/products").then(res => setProducts(res.data)).catch(() => {});
+    api.get("/products").then(res => setProducts(res.data)).catch((err) => console.error("Failed to fetch products:", err));
   }, []);
 
   const logout = () => {
