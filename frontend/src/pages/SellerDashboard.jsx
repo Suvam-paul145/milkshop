@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import api from "../services/api";
 
 function SellerDashboard() {
+  const navigate = useNavigate();
   const [milk, setMilk] = useState({
     milkName: "",
     description: "",
@@ -10,13 +12,23 @@ function SellerDashboard() {
   });
 
   const addMilk = async () => {
-    await api.post("/products/add", milk);
-    alert("Milk added successfully");
+    try {
+      await api.post("/products", milk);
+      alert("Milk added successfully");
+    } catch (error) {
+      alert("Failed to add milk");
+    }
+  };
+
+  const logout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("role");
+    navigate("/login");
   };
 
   return (
-    <div>
-      <h2>Seller Dashboard</h2>
+    <div className="container">
+      <h2 className="neon">Seller Dashboard</h2>
 
       <input placeholder="Milk Name" onChange={e => setMilk({...milk, milkName: e.target.value})} />
       <input placeholder="Description" onChange={e => setMilk({...milk, description: e.target.value})} />
@@ -24,6 +36,7 @@ function SellerDashboard() {
       <input placeholder="Source" onChange={e => setMilk({...milk, source: e.target.value})} />
 
       <button onClick={addMilk}>Add Milk</button>
+      <button onClick={logout} style={{ marginTop: "10px", background: "linear-gradient(135deg, #ff006e, #ef476f)" }}>Logout</button>
     </div>
   );
 }
